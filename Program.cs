@@ -4,11 +4,12 @@
  При решении не рекомендуется пользоваться коллекциями, лучше обойтись исключительно массивами. */
 
 int longArray = Vvod("Введите из какого количества элементов будет массив => ", "Error!!!");
-string[] array =  NewArrayString(longArray);
+string[] array = NewArrayString(longArray);
+string[] newarray = FinalControl(array);
+PrintArrayString(newarray);
 
 
 
-Console.WriteLine("Hello, World!");
 
 
 #region 
@@ -27,18 +28,41 @@ static string[] NewArrayString(int longar)
     string[] arr = new string[longar];
     for (int i = 0; i < longar; i++)
     {
-        Console.Write($"Введи {i+1} элемент массива => ");
-        Console.ReadLine();
+        Console.Write($"Введи {i + 1} элемент массива => ");
+        arr[i] = Console.ReadLine();
         Console.WriteLine();
     }
     return arr;
 }
 
-static void FinalControl()
+static string[] FinalControl(string[] arr)
 {
-
+    int newLong = 0;
+    foreach (string el in arr)
+    {
+        if (el.Length <= 3) newLong++;
+    }
+    string[] newarr = new string[newLong];
+    int j = 0;
+    foreach (string el in arr)
+    {
+        if (el.Length <= 3)
+        {
+            newarr[j] = el;
+            j++;
+        }
+    }
+    return newarr;
 }
 
+static void PrintArrayString(string[] arr)
+{
+    for (int i=0; i<arr.Length;i++)
+    {
+        Console.Write($"{arr[i]}\t");
+    }
+    Console.WriteLine();
+}
 
 
 #endregion
