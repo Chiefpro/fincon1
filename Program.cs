@@ -4,6 +4,7 @@
  При решении не рекомендуется пользоваться коллекциями, лучше обойтись исключительно массивами. */
 
 int longArray = Vvod("Введите из какого количества элементов будет массив => ", "Error!!!");
+string[] array =  NewArrayString(longArray);
 
 
 
@@ -20,6 +21,17 @@ static int Vvod(string text, string error)
             return var;
         else Console.WriteLine(error);
     }
+}
+static string[] NewArrayString(int longar)
+{
+    string[] arr = new string[longar];
+    for (int i = 0; i < longar; i++)
+    {
+        Console.Write($"Введи {i+1} элемент массива => ");
+        Console.ReadLine();
+        Console.WriteLine();
+    }
+    return arr;
 }
 
 static void FinalControl()
